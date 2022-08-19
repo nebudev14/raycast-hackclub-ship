@@ -23,6 +23,16 @@
       "mode": "view"
     }
   ],
+  "preferences": [
+    {
+      "name": "token",
+      "type": "password",
+      "required": true,
+      "title": "token",
+      "description": "Your Slack API token",
+      "placeholder": "Enter your Slack API token"
+    }
+  ],
   "dependencies": {
     "@raycast/api": "^1.39.0",
     "@slack/web-api": "^6.7.2"
