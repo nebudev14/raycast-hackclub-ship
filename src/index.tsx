@@ -11,7 +11,7 @@ type Values = {
 
 export default function Command() {
   function handleSubmit(values: Values) {
-    console.log(values);
+    console.log(values)
     showToast({ title: "Submitted form", message: "See logs for submitted values" });
   }
 

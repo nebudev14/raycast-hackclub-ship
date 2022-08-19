@@ -15,10 +15,17 @@
       "title": "Ship",
       "description": "Ship a project to the Hack Club slack",
       "mode": "view"
+    },
+    {
+      "name": "login",
+      "title": "Log In",
+      "description": "Log into Slack",
+      "mode": "view"
     }
   ],
   "dependencies": {
-    "@raycast/api": "^1.39.0"
+    "@raycast/api": "^1.39.0",
+    "@slack/web-api": "^6.7.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.0.0",
