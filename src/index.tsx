@@ -14,15 +14,12 @@ import { useState, useEffect } from "react";
 import { createReadStream } from "fs";
 
 type Values = {
-  textfield?: string;
-  textarea: string;
-  // datepicker: Date;
-  // checkbox: boolean;
-  // dropdown: string;
-  // tokeneditor: string[];
+  title?: string;
+  message: string;
+  channel: string;
 };
 
-export default  function Command() {
+export default function Command() {
   const { token } = getPreferenceValues();
   const web = new WebClient(token);
   const [image, setImage] = useState<string>();
@@ -39,7 +36,20 @@ export default  function Command() {
   })
 
   async function handleSubmit(values: Values) {
-    const channelId = "C029NP7J5C7";
+    const title = values.title ? values.title + "\n" : "";
+    const message = title + values.message;
+
+
+    // if (image !== "") {
+    //   const result = await web.files.upload({
+    //     file: createReadStream(image as string),
+    //     channels: values.channel,
+    //     initial_comment: 
+    //   })
+  
+    // } else {
+
+    // }
 
     // const result = await web.chat.postMessage({
     //   text: values.textarea,
@@ -50,11 +60,6 @@ export default  function Command() {
     // console.log(values.textfield);
     // showToast({ title: "Submitted form", message: "See logs for submitted values" });
 
-    const result = await web.files.upload({
-      file: createReadStream(image as string),
-      channels: channelId,
-      initial_comment: "TEST IMAGE W"
-    })
 
   }
 
@@ -67,16 +72,16 @@ export default  function Command() {
       }
     >
       <Form.Description text="Ship a project to the Hack Club Slack!" />
-      <Form.TextField id="textfield" title="Title (optional)" placeholder="Title" />
+      <Form.TextField id="title" title="Title (optional)" placeholder="Title" />
       <Form.TextArea
-        id="textarea"
+        id="message"
         title="Ship message"
         placeholder="Detail your ship! Feel free to add demo links too!"
       />
       <Form.Separator />
-      <Form.Dropdown id="dropdown" title="Channel">
-        <Form.Dropdown.Item value="C01504DCLVD" title="Scrapbook" />
+      <Form.Dropdown id="channel" title="Channel">
         <Form.Dropdown.Item value="C0M8PUPU6" title="Ship" />
+        <Form.Dropdown.Item value="C01504DCLVD" title="Scrapbook" />
         <Form.Dropdown.Item value="C029NP7J5C7" title="warren's channel rofl" />
       </Form.Dropdown>
       {image !== "" ? <Form.Description text={`Selected ${image}`} /> : <Form.Description text="No image selected!" />}
