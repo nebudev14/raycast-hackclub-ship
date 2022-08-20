@@ -11,6 +11,7 @@ import {
 import { WebClient } from "@slack/web-api";
 import { grabFile } from "./utils/grab-file";
 import { useState, useEffect } from "react";
+import { createReadStream } from "fs";
 
 type Values = {
   textfield?: string;
@@ -47,8 +48,14 @@ export default  function Command() {
     // })
     // console.log(`sent ${result.ts}`)
     // console.log(values.textfield);
-    // console.log(item)
     // showToast({ title: "Submitted form", message: "See logs for submitted values" });
+
+    const result = await web.files.upload({
+      file: createReadStream(image as string),
+      channels: channelId,
+      initial_comment: "TEST IMAGE W"
+    })
+
   }
 
   return (
@@ -72,6 +79,7 @@ export default  function Command() {
         <Form.Dropdown.Item value="C0M8PUPU6" title="Ship" />
         <Form.Dropdown.Item value="C029NP7J5C7" title="warren's channel rofl" />
       </Form.Dropdown>
+      {image !== "" ? <Form.Description text={`Selected ${image}`} /> : <Form.Description text="No image selected!" />}
     </Form>
   );
 }
