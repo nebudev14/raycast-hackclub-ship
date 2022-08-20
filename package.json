@@ -23,8 +23,8 @@
       "type": "password",
       "required": true,
       "title": "token",
-      "description": "Your Slack API token (Check the README for instructions on how to get this!)",
-      "placeholder": "Enter your Slack API token"
+      "description": "Your Slack Access Token (Check the README for instructions on how to get this!)",
+      "placeholder": "Enter your Slack Access Token"
     }
   ],
   "dependencies": {

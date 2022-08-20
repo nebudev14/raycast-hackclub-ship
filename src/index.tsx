@@ -35,7 +35,7 @@ export default function Command() {
   });
 
   async function handleSubmit(values: Values) {
-    const title = values.title ? values.title + "\n" : "";
+    const title = values.title ? values.title + "\n\n" : "";
     const message = title + values.message;
 
     if (image !== "") {
