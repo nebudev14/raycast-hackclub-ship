@@ -26,41 +26,36 @@ export default function Command() {
 
   useEffect(() => {
     grabFile()
-    .then((file) => {
-      setImage(file[0].path)
-    })
-    .catch((err) => {
-      setImage("");
-    });
-
-  })
+      .then((file) => {
+        setImage(file[0].path);
+      })
+      .catch((err) => {
+        setImage("");
+      });
+  });
 
   async function handleSubmit(values: Values) {
     const title = values.title ? values.title + "\n" : "";
     const message = title + values.message;
 
+    if (image !== "") {
+      const result = await web.files.upload({
+        file: createReadStream(image as string),
+        channels: values.channel,
+        initial_comment: message,
+      });
 
-    // if (image !== "") {
-    //   const result = await web.files.upload({
-    //     file: createReadStream(image as string),
-    //     channels: values.channel,
-    //     initial_comment: 
-    //   })
-  
-    // } else {
+      console.log(`sent ${result.ts}`);
+    } else {
+      const result = await web.chat.postMessage({
+        text: message,
+        channel: values.channel,
+      });
 
-    // }
+      console.log(`sent ${result.ts}`);
+    }
 
-    // const result = await web.chat.postMessage({
-    //   text: values.textarea,
-    //   channel: channelId,
-
-    // })
-    // console.log(`sent ${result.ts}`)
-    // console.log(values.textfield);
-    // showToast({ title: "Submitted form", message: "See logs for submitted values" });
-
-
+    showToast({ title: "Success!", message: "Your project has been shipped! Congratulations!" });
   }
 
   return (
