@@ -3,7 +3,7 @@
   "name": "hack-club-ship",
   "title": "Hack Club Ship",
   "description": "Ship your projects to the Hack Club Slack directly from Raycast!",
-  "icon": "command-icon.png",
+  "icon": "hackclub.png",
   "author": "NebuDev14",
   "categories": [
     "Fun"

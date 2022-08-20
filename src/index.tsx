@@ -3,10 +3,7 @@ import {
   ActionPanel,
   Action,
   showToast,
-  showInFinder,
   getPreferenceValues,
-  getSelectedFinderItems,
-  Detail,
 } from "@raycast/api";
 import { WebClient } from "@slack/web-api";
 import { grabFile } from "./utils/grab-file";
@@ -77,7 +74,6 @@ export default function Command() {
       <Form.Dropdown id="channel" title="Channel">
         <Form.Dropdown.Item value="C0M8PUPU6" title="Ship" />
         <Form.Dropdown.Item value="C01504DCLVD" title="Scrapbook" />
-        <Form.Dropdown.Item value="C029NP7J5C7" title="warren's channel rofl" />
       </Form.Dropdown>
       {image !== "" ? <Form.Description text={`Selected ${image}`} /> : <Form.Description text="No image selected!" />}
     </Form>
